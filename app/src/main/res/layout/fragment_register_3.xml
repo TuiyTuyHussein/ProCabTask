@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:paddingTop="10dp"
+        android:paddingBottom="70dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="70dp"
+                android:paddingLeft="10dp"
+                android:nextFocusDown="@id/password2"
+                android:paddingRight="10dp"
+                android:hint="@string/password"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:theme="@style/edit_style"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                 />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/password2"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="@string/confirm_password"
+                android:textColor="@android:color/white"
+                android:singleLine="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:theme="@style/edit_style"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                 />
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/finish"
+                android:textAllCaps="false"
+                android:theme="@style/Login_button_style"
+                android:text="@string/finish"
+                android:enabled="false"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/finish_txt_color"
+                android:layout_width="match_parent"
+                android:layout_height="55dp" >
+                <requestFocus/>
+            </android.support.v7.widget.AppCompatButton>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

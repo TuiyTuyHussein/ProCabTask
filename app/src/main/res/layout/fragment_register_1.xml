@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <ScrollView
+        android:paddingBottom="70dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/firstName"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/first_name"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:nextFocusDown="@id/lastName"
+                    android:layout_height="?actionBarSize"
+                    />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/lastName"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/last_name"
+                    android:nextFocusDown="@id/email"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/email"
+                    android:nextFocusDown="@id/contactNumber"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/contactNumber"
+                    android:inputType="phone"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/contact_number"
+                    android:nextFocusDown="@id/currentAddress"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/currentAddress"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/current_address"
+                    android:nextFocusDown="@id/maritalStatus"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/maritalStatus"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/marital_status"
+                    android:nextFocusDown="@id/motherNationality"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:drawableEnd="@mipmap/ic_arrow_down"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    android:drawableRight="@mipmap/ic_arrow_down" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/motherNationality"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:nextFocusDown="@id/employerName"
+                    android:hint="@string/mother_nationality"
+                    android:singleLine="true"
+                    android:drawableEnd="@mipmap/ic_arrow_down"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    android:drawableRight="@mipmap/ic_arrow_down" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/employerName"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:nextFocusDown="@id/engagementDate"
+                    android:hint="@string/employer_name"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/engagementDate"
+                    android:inputType="date"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:hint="@string/engagement_date"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:theme="@style/edit_style"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+                <View
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="?actionBarSize"
+                    />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

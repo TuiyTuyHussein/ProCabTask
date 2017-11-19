@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/background"/>
+
+    <ScrollView
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_margin="30dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageButton
+                    android:id="@+id/close"
+                    android:clickable="true"
+                    style="?attr/actionButtonStyle"
+                    android:layout_gravity="center"
+                    android:src="@drawable/combined_shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:contentDescription="TODO" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_gravity="center"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:text="@string/login"
+                    android:gravity="center"
+                    android:layout_marginEnd="50dp"
+                    android:textColor="@android:color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/white"
+                style="@style/TextAppearance.AppCompat.Display1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/need_to_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/white"
+                android:text="@string/need_to_login_desc"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/group_5"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="@string/email"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:theme="@style/edit_style"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                tools:ignore="RtlCompat" />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/group_3"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:hint="@string/password"
+                android:textColor="@android:color/white"
+                android:singleLine="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:theme="@style/edit_style"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                tools:ignore="RtlCompat" />
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/login"
+                android:enabled="false"
+                android:textAllCaps="false"
+                android:theme="@style/Login_button_style"
+                android:text="@string/login"
+                android:textColor="@color/finish_txt_color"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="55dp" />
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:text="@string/forgot_password"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatTextView
+
+                    android:textColor="@android:color/white"
+                    android:text="@string/not_have_account"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/register"
+                    style="?attr/actionButtonStyle"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:text="@string/register"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

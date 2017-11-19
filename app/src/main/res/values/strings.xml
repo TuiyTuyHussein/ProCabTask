@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ProCabTask</string>
+
+    <string name="need_to_login">You need to login</string>
+    <string name="need_to_login_desc">Don\'t worry about the visa We can guarantee it for youDon\'t worry about the visa We can guarantee it for you</string>
+    <string name="login_register">Login Or Register</string>
+    <string name="my_profile">My Profile</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="not_have_account">You don\'t have an account ?</string>
+    <string name="register">Register !</string>
+    <string name="next">Next</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="current_address">Current Address</string>
+    <string name="marital_status">Marital Status</string>
+    <string name="mother_nationality">Mother Nationality</string>
+    <string name="employer_name">Employer name</string>
+    <string name="engagement_date">Engagement Date</string>
+    <string name="nationality">Nationality</string>
+    <string name="pass_number">Pass. Number</string>
+    <string name="place_of_birth">Place of Birth</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="place_of_issue">Place of Issue</string>
+    <string name="pass_issue_date">Pass. Issue Date</string>
+    <string name="pass_expiry_date">Pass. Expiry Date</string>
+    <string name="cid_number">Cid Number</string>
+    <string name="passport_copy">Passport Copy</string>
+    <string name="civil_id_copy">Civil ID Copy</string>
+    <string name="residence_copy">Residence Copy</string>
+    <string name="other_documents">Other Documents</string>
+    <string name="finish">Finish</string>
+</resources>
