@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.github.angads25.filepicker.controller.DialogSelectionListener;
 import com.github.angads25.filepicker.model.DialogConfigs;
 import com.github.angads25.filepicker.model.DialogProperties;
 import com.github.angads25.filepicker.view.FilePickerDialog;
@@ -30,9 +29,6 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
-import dev.m.hussein.procabtask.config.Invalidation;
-import dev.m.hussein.procabtask.ui.activity.MainActivity;
-import dev.m.hussein.procabtask.ui.activity.RegisterActivity;
 import dev.m.hussein.procabtask.ui.dialog.DatePickerDialogFragment;
 import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 
@@ -47,7 +43,6 @@ public class FragmentRegister2 extends Fragment {
     private static final int RESIDENCE_COPY = 12;
     private static final int OTHER_DOCUMENTS = 13;
     Context context;
-    private OnNextEnable onNextEnable;
     @BindView(R.id.nationality) AppCompatEditText nationality;
     @BindView(R.id.pass_number) AppCompatEditText passNumber;
     @BindView(R.id.place_of_birth) AppCompatEditText placeOfBirth;
@@ -63,9 +58,8 @@ public class FragmentRegister2 extends Fragment {
     @BindView(R.id.civilIDCopyPath) AppCompatTextView civilIDCopyText;
     @BindView(R.id.residenceCopyPath) AppCompatTextView residenceCopyText;
     @BindView(R.id.otherDocumentsPath) AppCompatTextView otherDocumentsText;
-
     DialogProperties properties ;
-
+    private OnNextEnable onNextEnable;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy" , Locale.getDefault());
     private Calendar birthCalendar , passCalendar;
     private FilePickerDialog dialog;
@@ -215,29 +209,8 @@ public class FragmentRegister2 extends Fragment {
         }
     }
 
-
-    private class CustomTextWatcher implements TextWatcher {
-
-
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            if (onNextEnable != null) onNextEnable.setNextEnable(true , isAllViewsNotEmpty());
-
-        }
-    }
-
     private boolean isAllViewsNotEmpty() {
+
 
         if (TextUtils.isEmpty(nationality.getText())) return false;
         if (TextUtils.isEmpty(passNumber.getText())) return false;
@@ -263,8 +236,27 @@ public class FragmentRegister2 extends Fragment {
         return true;
     }
 
-
     public void addOnNextEnable(OnNextEnable onNextEnable) {
         this.onNextEnable = onNextEnable;
+    }
+
+    private class CustomTextWatcher implements TextWatcher {
+
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (onNextEnable != null) onNextEnable.setNextEnable(true, isAllViewsNotEmpty());
+
+        }
     }
 }
