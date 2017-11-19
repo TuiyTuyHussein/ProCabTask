@@ -1,5 +1,6 @@
 package dev.m.hussein.procabtask.ui.activity;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -53,10 +54,10 @@ public class RegisterActivity extends AppCompatActivity implements OnNextEnable 
             nextFragment();
         });
     }
-
+    Fragment fragment = null;
     private void nextFragment() {
         currentPosition ++;
-        Fragment fragment = null;
+
         switch (currentPosition){
             case 0:
                 fragment = new FragmentRegister1();
@@ -95,6 +96,13 @@ public class RegisterActivity extends AppCompatActivity implements OnNextEnable 
         if (tabLayout != null && tabLayout.getTabAt(currentPosition) != null)
             tabLayout.getTabAt(currentPosition).select();
         getSupportFragmentManager().popBackStack();
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (fragment != null) fragment.onRequestPermissionsResult(requestCode , permissions , grantResults);
     }
 
     private void setupTabs() {
