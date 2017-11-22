@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
@@ -17,22 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
-import dev.m.hussein.procabtask.config.Invalidation;
 import dev.m.hussein.procabtask.config.User;
 import dev.m.hussein.procabtask.ui.activity.MainActivity;
-import dev.m.hussein.procabtask.ui.activity.RegisterActivity;
-import dev.m.hussein.procabtask.ui.dialog.DatePickerDialogFragment;
 import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 
 /**
@@ -42,13 +33,13 @@ import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 public class FragmentRegister3 extends Fragment {
 
     Context context;
-    private User user;
-    private OnNextEnable onNextEnable;
     @BindView(R.id.password) AppCompatEditText password;
     @BindView(R.id.password2) AppCompatEditText confirmPassword;
     @BindView(R.id.finish) AppCompatButton finish;
-
     ProgressDialog dialog;
+    private User user;
+    private OnNextEnable onNextEnable;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,23 +110,6 @@ public class FragmentRegister3 extends Fragment {
                 });
     }
 
-
-    private class CustomTextWatcher implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-        @Override
-        public void afterTextChanged(Editable editable) {
-            enableFinish(isAllViewsNotEmpty());
-        }
-    }
-
-
     private boolean isAllViewsNotEmpty() {
 
         if (TextUtils.isEmpty(password.getText())) return false;
@@ -143,10 +117,29 @@ public class FragmentRegister3 extends Fragment {
         if (!password.getText().toString().equals(confirmPassword.getText().toString())) return false;
 
 
+
         return true;
     }
+
     public void addOnNextEnable(User user, OnNextEnable onNextEnable) {
         this.user = user;
         this.onNextEnable = onNextEnable;
+    }
+
+    private class CustomTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            enableFinish(isAllViewsNotEmpty());
+        }
     }
 }
