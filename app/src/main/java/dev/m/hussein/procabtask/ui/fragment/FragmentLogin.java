@@ -1,5 +1,6 @@
 package dev.m.hussein.procabtask.ui.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +45,7 @@ public class FragmentLogin extends Fragment {
 
     private OnLoginClick onLoginClick;
 
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -67,13 +72,28 @@ public class FragmentLogin extends Fragment {
 
 
     private void setupViews() {
+        dialog = new ProgressDialog(context);
+        dialog.setMessage("Login ...");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+
         close.setOnClickListener(view -> {
             if (onLoginClick != null) onLoginClick.onCloseClick();
         });
 
         login.setOnClickListener(view -> {
-            startActivity(new Intent(context , MainActivity.class));
-            getActivity().supportFinishAfterTransition();
+            dialog.show();
+            FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(email.getText().toString() , password.getText().toString())
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            startActivity(new Intent(context , MainActivity.class));
+                            getActivity().supportFinishAfterTransition();
+                        }else {
+                            Toast.makeText(context , "Couldn't login , please check login info and try again" , Toast.LENGTH_LONG).show();
+                        }
+                    });
+
         });
 
         register.setOnClickListener(view -> startActivity(new Intent(context , RegisterActivity.class)));

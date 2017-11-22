@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "321923596326",
+    "firebase_url": "https://procab-20559.firebaseio.com",
+    "project_id": "procab-20559",
+    "storage_bucket": "procab-20559.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321923596326:android:f759a16e478fedab",
+        "android_client_info": {
+          "package_name": "dev.m.hussein.procabtask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321923596326-nfajsp8nnqucj4si6tmeuu8rp2gj1chm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.m.hussein.procabtask",
+            "certificate_hash": "bd32b99c0746c34721bd50dd2986c04d9b002282"
+          }
+        },
+        {
+          "client_id": "321923596326-1i38c9ci3pjmvtbmtnonfg77c58tcapn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4yGcG7SOrhUg1-NYKONrLamrfaboH4l8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321923596326-1i38c9ci3pjmvtbmtnonfg77c58tcapn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

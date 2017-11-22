@@ -29,6 +29,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
+import dev.m.hussein.procabtask.config.User;
 import dev.m.hussein.procabtask.ui.dialog.DatePickerDialogFragment;
 import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 
@@ -59,6 +60,7 @@ public class FragmentRegister2 extends Fragment {
     @BindView(R.id.residenceCopyPath) AppCompatTextView residenceCopyText;
     @BindView(R.id.otherDocumentsPath) AppCompatTextView otherDocumentsText;
     DialogProperties properties ;
+    private User user;
     private OnNextEnable onNextEnable;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy" , Locale.getDefault());
     private Calendar birthCalendar , passCalendar;
@@ -213,30 +215,29 @@ public class FragmentRegister2 extends Fragment {
 
 
         if (TextUtils.isEmpty(nationality.getText())) return false;
+        else user.nationality = nationality.getText().toString();
         if (TextUtils.isEmpty(passNumber.getText())) return false;
+        else user.passNumber = passNumber.getText().toString();
         if (TextUtils.isEmpty(placeOfBirth.getText())) return false;
+        else user.placeOfBirth = placeOfBirth.getText().toString();
         if (TextUtils.isEmpty(dateOfBirth.getText())) return false;
+        else user.birthDate = birthCalendar.getTime();
         if (TextUtils.isEmpty(placeOfIssue.getText())) return false;
+        else user.placeOfIssue = placeOfIssue.getText().toString();
         if (TextUtils.isEmpty(passIssueDate.getText())) return false;
+        else user.passIssueDate = passCalendar.getTime();
         if (TextUtils.isEmpty(cidNumber.getText())) return false;
-        if (TextUtils.isEmpty(passportCopyText.getText())){
-//            Toast.makeText(context , "Please, Choose Passport Copy" , Toast.LENGTH_LONG).show();
-            return false;
-        }
-        if (TextUtils.isEmpty(civilIDCopyText.getText())){
-//            Toast.makeText(context , "Please, Choose Civil ID Copy" , Toast.LENGTH_LONG).show();
-            return false;
-        }
-        if (TextUtils.isEmpty(residenceCopyText.getText())){
-//            Toast.makeText(context , "Please, Choose Residence Copy" , Toast.LENGTH_LONG).show();
-            return false;
-        }
+        else user.cidNumber = cidNumber.getText().toString();
+        if (TextUtils.isEmpty(passportCopyText.getText())) return false;
+        if (TextUtils.isEmpty(civilIDCopyText.getText())) return false;
+        if (TextUtils.isEmpty(residenceCopyText.getText())) return false;
 
 
         return true;
     }
 
-    public void addOnNextEnable(OnNextEnable onNextEnable) {
+    public void addOnNextEnable(User user, OnNextEnable onNextEnable) {
+        this.user = user;
         this.onNextEnable = onNextEnable;
     }
 

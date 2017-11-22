@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
 import dev.m.hussein.procabtask.config.Invalidation;
+import dev.m.hussein.procabtask.config.User;
 import dev.m.hussein.procabtask.ui.activity.RegisterActivity;
 import dev.m.hussein.procabtask.ui.dialog.DatePickerDialogFragment;
 import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
@@ -32,6 +33,7 @@ import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 public class FragmentRegister1 extends Fragment  {
 
     Context context;
+    private User user;
     private OnNextEnable onNextEnable;
 
     @BindView(R.id.firstName) AppCompatEditText firstName;
@@ -90,7 +92,8 @@ public class FragmentRegister1 extends Fragment  {
         });
     }
 
-    public void addOnNextEnable(OnNextEnable onNextEnable) {
+    public void addOnNextEnable(User user, OnNextEnable onNextEnable) {
+        this.user = user;
         this.onNextEnable = onNextEnable;
     }
 
@@ -120,14 +123,23 @@ public class FragmentRegister1 extends Fragment  {
     private boolean isAllViewsNotEmpty() {
 
         if (TextUtils.isEmpty(firstName.getText())) return false;
+        else user.firstName = firstName.getText().toString();
         if (TextUtils.isEmpty(lastName.getText())) return false;
+        else user.lastName = lastName.getText().toString();
         if (TextUtils.isEmpty(email.getText()) || !Invalidation.isValidEmail(email.getText().toString())) return false;
+        else user.email  = email.getText().toString();
         if (TextUtils.isEmpty(contactNumber.getText())) return false;
+        else user.contactNumber = contactNumber.getText().toString();
         if (TextUtils.isEmpty(currentAddress.getText())) return false;
+        else user.currentAddress = currentAddress.getText().toString();
         if (TextUtils.isEmpty(maritalStatus.getText())) return false;
+        else user.maritalStatus = maritalStatus.getText().toString();
         if (TextUtils.isEmpty(motherNationality.getText())) return false;
+        else user.motherNationality = motherNationality.getText().toString();
         if (TextUtils.isEmpty(employerName.getText())) return false;
+        else user.employerName = employerName.getText().toString();
         if (TextUtils.isEmpty(engagementDate.getText())) return false;
+        else user.engagementDate = calendar.getTime();
 
 
         return true;

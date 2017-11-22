@@ -17,6 +17,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
+import dev.m.hussein.procabtask.config.User;
 import dev.m.hussein.procabtask.ui.fragment.FragmentRegister1;
 import dev.m.hussein.procabtask.ui.fragment.FragmentRegister2;
 import dev.m.hussein.procabtask.ui.fragment.FragmentRegister3;
@@ -28,7 +29,9 @@ public class RegisterActivity extends AppCompatActivity implements OnNextEnable 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.next) AppCompatButton nextButton;
 
+
     private int currentPosition = -1;
+    private User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,9 @@ public class RegisterActivity extends AppCompatActivity implements OnNextEnable 
             nextFragment();
         });
     }
+
+
+
     Fragment fragment = null;
     private void nextFragment() {
         currentPosition ++;
@@ -61,17 +67,17 @@ public class RegisterActivity extends AppCompatActivity implements OnNextEnable 
         switch (currentPosition){
             case 0:
                 fragment = new FragmentRegister1();
-                ((FragmentRegister1)fragment).addOnNextEnable( this);
+                ((FragmentRegister1)fragment).addOnNextEnable(user, this);
                 break;
 
             case 1:
                 fragment = new FragmentRegister2();
-                ((FragmentRegister2)fragment).addOnNextEnable(this);
+                ((FragmentRegister2)fragment).addOnNextEnable(user , this);
                 break;
 
             case 2:
                 fragment = new FragmentRegister3();
-                ((FragmentRegister3)fragment).addOnNextEnable(this);
+                ((FragmentRegister3)fragment).addOnNextEnable(user ,this);
                 break;
         }
 

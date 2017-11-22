@@ -15,5 +15,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to our App"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:id="@+id/appCompatTextView" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/logout"
+        android:layout_width="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="55dp"
+        android:layout_below="@+id/appCompatTextView"
+        android:layout_gravity="center"
+        android:layout_marginTop="38dp"
+        android:gravity="center"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/finish_txt_color"
+        android:theme="@style/Login_button_style" />
 </RelativeLayout>

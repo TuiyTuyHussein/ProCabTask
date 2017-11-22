@@ -1,8 +1,10 @@
 package dev.m.hussein.procabtask.ui.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
@@ -13,6 +15,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -20,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dev.m.hussein.procabtask.R;
 import dev.m.hussein.procabtask.config.Invalidation;
+import dev.m.hussein.procabtask.config.User;
 import dev.m.hussein.procabtask.ui.activity.MainActivity;
 import dev.m.hussein.procabtask.ui.activity.RegisterActivity;
 import dev.m.hussein.procabtask.ui.dialog.DatePickerDialogFragment;
@@ -32,11 +42,13 @@ import dev.m.hussein.procabtask.ui.interfaces.OnNextEnable;
 public class FragmentRegister3 extends Fragment {
 
     Context context;
+    private User user;
     private OnNextEnable onNextEnable;
     @BindView(R.id.password) AppCompatEditText password;
     @BindView(R.id.password2) AppCompatEditText confirmPassword;
     @BindView(R.id.finish) AppCompatButton finish;
 
+    ProgressDialog dialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -64,16 +76,48 @@ public class FragmentRegister3 extends Fragment {
     private void setupViews() {
 
 
+        dialog = new ProgressDialog(context);
+        dialog.setMessage("Registering ...");
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+
         password.addTextChangedListener(new CustomTextWatcher());
         confirmPassword.addTextChangedListener(new CustomTextWatcher());
 
         finish.setOnClickListener(view -> {
-            startActivity(new Intent(context , MainActivity.class));
-            getActivity().supportFinishAfterTransition();
+            dialog.show();
+            FirebaseAuth.getInstance()
+                    .createUserWithEmailAndPassword(user.email , password.getText().toString())
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            user.id = task.getResult().getUser().getUid();
+                            Toast.makeText(context , "Register Successfully" , Toast.LENGTH_LONG).show();
+                            addUserToDataBase();
+                        }else{
+                            dialog.dismiss();
+                            Toast.makeText(context , task.getException() == null ?
+                                    "Couldn't register , please try again" : task.getException().getMessage() , Toast.LENGTH_LONG).show();
+                        }
+                    });
+
         });
 
     }
 
+    private void addUserToDataBase() {
+        FirebaseDatabase.getInstance().getReference().child("USERS")
+                .child(user.id).setValue(user)
+                .addOnCompleteListener(task -> {
+                    dialog.dismiss();
+                    if (task.isSuccessful()){
+                        Toast.makeText(context , "User Added To Database Successfully" , Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(context , MainActivity.class));
+                        getActivity().supportFinishAfterTransition();
+                    }else{
+                        Toast.makeText(context , "Couldn't Add user to database , please try again" , Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 
 
     private class CustomTextWatcher implements TextWatcher {
@@ -98,9 +142,11 @@ public class FragmentRegister3 extends Fragment {
         if (TextUtils.isEmpty(confirmPassword.getText())) return false;
         if (!password.getText().toString().equals(confirmPassword.getText().toString())) return false;
 
+
         return true;
     }
-    public void addOnNextEnable(OnNextEnable onNextEnable) {
+    public void addOnNextEnable(User user, OnNextEnable onNextEnable) {
+        this.user = user;
         this.onNextEnable = onNextEnable;
     }
 }
